@@ -52,6 +52,7 @@
 }
 .test-content__red-button{
     background: #b00100;
+    opacity: 0;
 }
 .test-content__orange-button{
     background: #f1a417;
