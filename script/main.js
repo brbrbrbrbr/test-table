@@ -9,7 +9,14 @@ element.addEventListener( 'mouseover', function () {
         for (j = 0; j < 2; j++) {
             buttonVisibility[j].style.opacity = '1';
         }
+        /*var x = element.offsetX == undefined?element.layerX:element.offsetX;
+        var y = element.offsetY == undefined?element.layerY:element.offsetY;
+        console.log(x +' X '+ y);*/
+        var x = MouseEvent.offsetX;
+        var y = MouseEvent.offsetY;
+        console.log(x +' X '+ y);
 })
+
 element.addEventListener( 'mouseout', function () {
     let buttonVisibility = document.getElementsByClassName('test-content__red-button');
     for (j = 0; j < 2; j++) {
