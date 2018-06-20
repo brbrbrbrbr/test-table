@@ -2,6 +2,8 @@ let i = 0;
 let j = 0;
 let rowNumber = 3;
 let colNumber = 3;
+let hoverDivOffsetLeft = 0;
+let hoverDivOffsetTop = 0;
 
 let element = document.getElementById('test-content__test-table');
 element.addEventListener( 'mouseover', function () {
@@ -9,20 +11,27 @@ element.addEventListener( 'mouseover', function () {
         for (j = 0; j < 2; j++) {
             buttonVisibility[j].style.opacity = '1';
         }
-        /*var x = element.offsetX == undefined?element.layerX:element.offsetX;
-        var y = element.offsetY == undefined?element.layerY:element.offsetY;
-        console.log(x +' X '+ y);*/
-        var x = MouseEvent.offsetX;
-        var y = MouseEvent.offsetY;
-        console.log(x +' X '+ y);
-})
+});
+
+element.onmouseover = function (event) {
+    let removeColumn = document.getElementById('test-content__remove-column');
+    let removeRow = document.getElementById('test-content__remove-row');
+    let target = event.target;
+    if(target.className != 'test-content__square') return;
+    console.dir(target);
+    hoverDivOffsetLeft = target.offsetLeft;
+    hoverDivOffsetTop = target.offsetTop;
+    console.log(hoverDivOffsetTop + ' ' + hoverDivOffsetLeft);
+
+}
 
 element.addEventListener( 'mouseout', function () {
     let buttonVisibility = document.getElementsByClassName('test-content__red-button');
     for (j = 0; j < 2; j++) {
         buttonVisibility[j].style.opacity = '0';
     }
-})
+});
+
 
 function addColumnToTable(){
     let addEltmentToTable = document.createElement("div");
@@ -34,9 +43,10 @@ function addColumnToTable(){
         let addEltmentTocolumn = document.createElement("div");
         addEltmentTocolumn.className = "test-content__square";
         colElement.appendChild(addEltmentTocolumn);
-        console.log('added div to col');
     }
     colNumber++;
+    let box = element.getBoundingClientRect();
+
 }
 
 function addRowToTable(){
@@ -48,7 +58,6 @@ function addRowToTable(){
     }
     rowNumber++;
 }
-function removeEltmentFromTable(){
-    let element = document.getElementById('test-content__test-table');
-    element.removeChild(element);
-}
+/*function removeEltmentFromTable(){
+
+}*/
