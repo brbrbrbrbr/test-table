@@ -12,15 +12,14 @@ element.addEventListener( 'mouseover', function () {
             buttonVisibility[j].style.opacity = '1';
         }
     element.onmousemove = function (event) {
-        let p = 'px';
+        const p = 'px';
         let removeColumn = document.getElementById('test-content__remove-column');
         let removeRow = document.getElementById('test-content__remove-row');
         let target = event.target;
         if(target.className != 'test-content__square') return;
-        console.dir(target);
         hoverDivOffsetLeft = target.offsetLeft;
         hoverDivOffsetTop = target.offsetTop;
-        console.log(hoverDivOffsetTop + ' ' + hoverDivOffsetLeft);
+        //console.log(hoverDivOffsetTop + ' ' + hoverDivOffsetLeft);
         removeColumn.style.marginLeft = hoverDivOffsetLeft + p;
         removeRow.style.marginTop = hoverDivOffsetTop + p;
 
@@ -41,7 +40,6 @@ function addColumnToTable(){
     let addEltmentToTable = document.createElement("div");
     addEltmentToTable.className = "col";
     element.appendChild(addEltmentToTable);
-    console.log('added col');
     let colElement = document.getElementById('test-content__test-table').lastChild;
     for (i = 0; i < rowNumber; i++) {
         let addEltmentTocolumn = document.createElement("div");
@@ -62,6 +60,9 @@ function addRowToTable(){
     }
     rowNumber++;
 }
-/*function removeEltmentFromTable(){
+function removeRowFromTable(){
 
-}*/
+}
+function removeColumnFromTable(){
+
+}
