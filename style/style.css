@@ -28,6 +28,7 @@
     display: grid;
     grid-row: 1;
     grid-column: 2;
+    margin-left: 0px;
 }
 #test-content__remove-row{
     display: grid;

@@ -11,19 +11,23 @@ element.addEventListener( 'mouseover', function () {
         for (j = 0; j < 2; j++) {
             buttonVisibility[j].style.opacity = '1';
         }
+    element.onmousemove = function (event) {
+        let p = 'px';
+        let removeColumn = document.getElementById('test-content__remove-column');
+        let removeRow = document.getElementById('test-content__remove-row');
+        let target = event.target;
+        if(target.className != 'test-content__square') return;
+        console.dir(target);
+        hoverDivOffsetLeft = target.offsetLeft;
+        hoverDivOffsetTop = target.offsetTop;
+        console.log(hoverDivOffsetTop + ' ' + hoverDivOffsetLeft);
+        removeColumn.style.marginLeft = hoverDivOffsetLeft + p;
+        removeRow.style.marginTop = hoverDivOffsetTop + p;
+
+    };
 });
 
-element.onmouseover = function (event) {
-    let removeColumn = document.getElementById('test-content__remove-column');
-    let removeRow = document.getElementById('test-content__remove-row');
-    let target = event.target;
-    if(target.className != 'test-content__square') return;
-    console.dir(target);
-    hoverDivOffsetLeft = target.offsetLeft;
-    hoverDivOffsetTop = target.offsetTop;
-    console.log(hoverDivOffsetTop + ' ' + hoverDivOffsetLeft);
 
-}
 
 element.addEventListener( 'mouseout', function () {
     let buttonVisibility = document.getElementsByClassName('test-content__red-button');
